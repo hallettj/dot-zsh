@@ -1,16 +1,17 @@
 #!/usr/bin/env ansible-playbook
 ---
-- hosts: workstations
+- hosts: localhost
   tasks:
     - name: install apt packages
-      action: apt pkg={{ item }} state=present
+      apt: pkg={{ item }} state=present
       sudo: yes
       with_items:
         - xclip
         - zsh
 
-    - name: set zsh as default shell
-      shell: chsh -s /usr/bin/zsh
+    # TODO: Does not work in playbook, since it asks for password confirmation
+    # - name: set zsh as default shell
+    #   shell: chsh -s /usr/bin/zsh
 
     - name: clone oh my zsh
       git: repo=git@github.com:robbyrussell/oh-my-zsh.git
