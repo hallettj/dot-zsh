@@ -1,0 +1,17 @@
+#!/usr/bin/env ansible-playbook
+---
+- hosts: workstations
+  tasks:
+    - name: install apt packages
+      action: apt pkg={{ item }} state=present
+      sudo: yes
+      with_items:
+        - zsh
+
+    - name: set zsh as default shell
+      shell: chsh -s /usr/bin/zsh
+
+    - name: clone oh my zsh
+      git: repo=git@github.com:robbyrussell/oh-my-zsh.git
+           dest=~/.oh-my-zsh
+           update=no
