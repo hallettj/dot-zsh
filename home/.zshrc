@@ -91,7 +91,7 @@ alias gtop="cd \$(git rev-parse --show-toplevel)"
 alias nm="nmcli nm"
 alias con="nmcli con"
 # Generate a password
-alias pass="grep -v '[^a-z]' /usr/share/dict/words | shuf | head -n4 | paste -sd ' '"
+alias mkpass="grep -v '[^a-z]' /usr/share/dict/words | shuf | head -n4 | paste -sd ' '"
 # Sends stdin to system clipboard
 alias clip="xclip -i -selection clipboard"
 
@@ -122,6 +122,11 @@ fi
 # Tells zsh where to look for completion scripts.
 if [[ -d "$HOME/.zsh/functions/Completion" ]]; then
   fpath=($HOME/.zsh/functions/Completion $fpath)
+fi
+
+# Load completions provided by Debian pacakages
+if [[ -d "/usr/share/zsh/vendor-completions" ]]; then
+  fpath=(/usr/share/zsh/vendor-completions $fpath)
 fi
 
 # Source ~/.zsh/local for configuration specific to this machine.
