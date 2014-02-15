@@ -83,7 +83,6 @@ alias bell="echo '\a'"
 alias beep=bell
 alias t="todo.sh -d ~/Dropbox/todo/todo.cfg"
 # Set correct term for tmux so solarized theme works in vim
-alias tmux="TERM=screen-256color-bce tmux"
 alias irc="autossh zinc -t '. ~/.profile; . ~/.zshrc; tmux attach -t irc'"
 alias pg="pgrep -fa"
 # Changes to top-level directory of git repository.
