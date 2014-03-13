@@ -1,6 +1,6 @@
 # dot-zsh
 
-This is my vim configuration.  It is managed with [homeshick][], which
+This is my zsh configuration.  It is managed with [homeshick][], which
 creates symlinks from the appropriate locations in my home directory.
 Installing dependencies, compiling, and other setup tasks are handled
 using [Ansible][], which runs the steps listed in `init.yml`.
