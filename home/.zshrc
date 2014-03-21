@@ -130,3 +130,14 @@ fi
 
 # Source ~/.zsh/local for configuration specific to this machine.
 [[ -s "$HOME/.zsh/local" ]] && source "$HOME/.zsh/local"
+
+# Source configurations from ~/.config/zsh.d/*
+CONFIGS="$HOME/.config/zsh.d"
+if [ -d "$CONFIGS" ]; then
+  CONFIGFILES=$(run-parts --list $CONFIGS)
+  if [ -n "$CONFIGFILES" ]; then
+    for CONFIGFILE in $CONFIGFILES; do
+      source $CONFIGFILE
+    done
+  fi
+fi
