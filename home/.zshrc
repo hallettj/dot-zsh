@@ -136,7 +136,7 @@ CONFIGS="$HOME/.config/zsh.d"
 if [ -d "$CONFIGS" ]; then
   CONFIGFILES=$(run-parts --list $CONFIGS)
   if [ -n "$CONFIGFILES" ]; then
-    for CONFIGFILE in $CONFIGFILES; do
+    for CONFIGFILE in ${(f)CONFIGFILES}; do
       source $CONFIGFILE
     done
   fi
