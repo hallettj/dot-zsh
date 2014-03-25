@@ -93,6 +93,7 @@ alias con="nmcli con"
 alias mkpass="grep -v '[^a-z]' /usr/share/dict/words | shuf | head -n4 | paste -sd ' '"
 # Sends stdin to system clipboard
 alias clip="xclip -i -selection clipboard"
+alias keycode="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 
 # Instructs shell to use todo.sh completions for the command `t`.
 compdef _todo.sh t
