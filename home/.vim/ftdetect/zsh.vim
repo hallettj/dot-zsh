@@ -1,1 +1,1 @@
-au BufRead,BufNewFile */zsh.d/* set filetype=zsh
+au BufRead,BufNewFile */zsh/conf.d/* set filetype=zsh

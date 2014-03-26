@@ -1,0 +1,13 @@
+# Customizes terminal titles
+ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~" #Just the name of the working directory
+
+# Prompt customizations
+ZSH_THEME_GIT_PROMPT_UNTRACKED=""
+
+# Right-prompt customizations
+local return_code="%(?..%{$R%}%? ↵%{$RESET%})"
+function custom_vi_mode_prompt_info() {
+  # Displays indicator when in insert mode or non-zero exit status
+  echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/$return_code}"
+}
+RPS1='$(custom_vi_mode_prompt_info)'

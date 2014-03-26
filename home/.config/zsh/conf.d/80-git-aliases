@@ -2,7 +2,10 @@ alias s='git status'
 alias st='git diff --stat'
 alias d='git diff'
 alias di='git diff --cached'
-alias a='git add -p'
+alias a='git add'
+alias ap='git add -p'
+alias c='git commit'
+alias ca='git commit --amend'
 alias h='git reset HEAD'
 
 function e() {

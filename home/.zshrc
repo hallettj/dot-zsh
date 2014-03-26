@@ -48,7 +48,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Lets me cd into any directory immediately under the given paths
 # without typing the full path.
-cdpath=($HOME $HOME/projects .)
+cdpath=(. $HOME $HOME/projects)
 # If an unmatched glob is used, just use it as literal text instead of giving an error.
 # Helpful for my lazy fingers considering how often I use scp:
 #   scp suchandsuch.host:files/* ./
@@ -63,65 +63,20 @@ unset LESS
 # Use Solarized theme colors for directory listings
 [[ -s "$HOME/.dircolors" ]] && eval `dircolors "$HOME/.dircolors"`
 
-# Customizes terminal titles
-ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~" #Just the name of the working directory
-
-# Prompt customizations
-ZSH_THEME_GIT_PROMPT_UNTRACKED=""
-
-# Right-prompt customizations
-local return_code="%(?..%{$R%}%? ↵%{$RESET%})"
-function custom_vi_mode_prompt_info() {
-  # Displays indicator when in insert mode or non-zero exit status
-  echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/$return_code}"
-}
-RPS1='$(custom_vi_mode_prompt_info)'
-
-# Aliases
-alias ack="ack-grep"
-alias bell="echo '\a'"
-alias beep=bell
-alias t="todo.sh -d ~/Dropbox/todo/todo.cfg"
-# Set correct term for tmux so solarized theme works in vim
-alias irc="autossh zinc -t '. ~/.profile; . ~/.zshrc; tmux attach -t irc'"
-alias pg="pgrep -fa"
-# Changes to top-level directory of git repository.
-alias gtop="cd \$(git rev-parse --show-toplevel)"
-alias nm="nmcli nm"
-alias con="nmcli con"
-# Generate a password
-alias mkpass="grep -v '[^a-z]' /usr/share/dict/words | shuf | head -n4 | paste -sd ' '"
-# Sends stdin to system clipboard
-alias clip="xclip -i -selection clipboard"
-alias keycode="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
-
-# Instructs shell to use todo.sh completions for the command `t`.
-compdef _todo.sh t
-
 # That's right
 export EDITOR=vim
 # And again
 export VISUAL=$EDITOR
 
-# Configuration for SBT, the Scala Simple Build Tool
-export SBT_OPTS="-Dfile.encoding=UTF8 -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=512m"
-
-# Ruby settings: this option automatically loads rubygems so that I don't need
-# any explicit require lines.
-export RUBYOPT='rubygems'
-
-# Run multiple Ruby versions with RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
-# Source ~/.zsh/local for configuration specific to this machine.
-if [[ -d "$HOME/.homesick/repos/homeshick" ]]; then
-  source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-  fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
-fi
-
-# Tells zsh where to look for completion scripts.
-if [[ -d "$HOME/.zsh/functions/Completion" ]]; then
-  fpath=($HOME/.zsh/functions/Completion $fpath)
+# Source configurations from ~/.config/zsh/conf.d/*
+CONFIGS="$HOME/.config/zsh/conf.d"
+if [ -d "$CONFIGS" ]; then
+  CONFIGFILES=$(run-parts --list $CONFIGS)
+  if [ -n "$CONFIGFILES" ]; then
+    for CONFIGFILE in ${(f)CONFIGFILES}; do
+      source $CONFIGFILE
+    done
+  fi
 fi
 
 # Load completions provided by Debian pacakages
@@ -129,16 +84,13 @@ if [[ -d "/usr/share/zsh/vendor-completions" ]]; then
   fpath=(/usr/share/zsh/vendor-completions $fpath)
 fi
 
-# Source ~/.zsh/local for configuration specific to this machine.
-[[ -s "$HOME/.zsh/local" ]] && source "$HOME/.zsh/local"
-
-# Source configurations from ~/.config/zsh.d/*
-CONFIGS="$HOME/.config/zsh.d"
-if [ -d "$CONFIGS" ]; then
-  CONFIGFILES=$(run-parts --list $CONFIGS)
-  if [ -n "$CONFIGFILES" ]; then
-    for CONFIGFILE in ${(f)CONFIGFILES}; do
-      source $CONFIGFILE
+# Read completion scripts from ~/.config/zsh/completions/*
+COMPLETIONS="$HOME/.config/zsh/completions"
+if [ -d "$COMPLETIONS" ]; then
+  COMPLETIONFILES=$(run-parts --list $COMPLETIONS)
+  if [ -n "$COMPLETIONFILES" ]; then
+    for COMPLETIONFILE in ${(f)COMPLETIONFILES}; do
+      fpath=($COMPLETIONFILE $fpath)
     done
   fi
 fi
