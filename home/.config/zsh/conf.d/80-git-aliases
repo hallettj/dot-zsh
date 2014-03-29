@@ -1,17 +1,9 @@
-alias s='git status'
-alias st='git diff --stat'
-alias d='git diff'
-alias di='git diff --cached'
-alias a='git add'
-alias ap='git add -p'
-alias c='git commit'
-alias ca='git commit --amend'
-alias h='git reset HEAD'
-
-function e() {
-  tmux split-window -h -c "#{pane_current_path}" "sensible-editor $1"
-}
-
-function se() {
-  tmux split-window -h -c "#{pane_current_path}" "sudo sensible-editor $1"
-}
+alias -g s='git status'
+alias -g st='git diff --stat'
+alias -g d='git diff'
+alias -g di='git diff --cached'
+alias -g a='git add'
+alias -g ap='git add -p'
+alias -g c='git commit'
+alias -g ca='git commit --amend'
+alias -g h='git reset HEAD'
