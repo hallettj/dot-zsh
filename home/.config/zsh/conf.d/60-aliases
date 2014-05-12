@@ -17,7 +17,7 @@ alias clip="xclip -i -selection clipboard"
 
 alias keycode="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 
-alias -g idea="sensible-editor ~/Documents/ideas.markdown"
-alias -g l="PERSONAL_LOG_DIR=~/Documents/notes node ~/opt/log/app.js"
+alias idea="sensible-editor ~/Documents/ideas.markdown"
+alias l="PERSONAL_LOG_DIR=~/Documents/notes node ~/opt/log/app.js"
 alias pi="p idea"
 alias pl="p l"

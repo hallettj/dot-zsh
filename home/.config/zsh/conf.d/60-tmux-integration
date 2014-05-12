@@ -1,9 +1,9 @@
-function p() {
-  tmux split-window -h -c "#{pane_current_path}" "$*"
-}
+# function p() {
+#   tmux split-window -h -c "#{pane_current_path}" "$*"
+# }
 
-alias -g e='sensible-editor'
-alias -g se='sudo sensible-editor'
+# alias -g e='sensible-editor'
+# alias -g se='sudo sensible-editor'
 
-alias pe='p e'
-alias pse='p se'
+# alias pe='p e'
+# alias pse='p se'
