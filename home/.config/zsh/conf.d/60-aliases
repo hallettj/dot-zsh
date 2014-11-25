@@ -10,7 +10,7 @@ alias nm="nmcli nm"
 alias con="nmcli con"
 
 # Generate a password
-alias mkpass="grep -v '[^a-z]' /usr/share/dict/words | shuf | head -n4 | paste -sd ' '"
+alias mkpass="grep -v '[^a-z]' /usr/share/dict/words | shuf --random-source=/dev/urandom | head -n4 | paste -sd ' '"
 
 # Sends stdin to system clipboard
 alias clip="xclip -i -selection clipboard"
