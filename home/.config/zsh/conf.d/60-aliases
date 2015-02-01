@@ -18,4 +18,4 @@ alias clip="xclip -i -selection clipboard"
 alias keycode="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'"
 
 alias idea="sensible-editor ~/Documents/ideas.markdown"
-alias note="echo '' | vipe .markdown | note"
+alias note="if [ -t 0 ]; then; echo '' | vipe .markdown | note; else note; fi"
