@@ -19,3 +19,6 @@ alias keycode="xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /
 
 alias idea="sensible-editor ~/Documents/ideas.markdown"
 alias note="if [ -t 0 ]; then; echo '' | vipe .markdown | note; else note; fi"
+
+# Run provisioning scripts for dot files
+alias provision="mr -d $HOME run command ansible-playbook -K init.yml"
