@@ -5,4 +5,3 @@ if [ -d "$PROFILES_DIR" ]; then
     source $PROFILE
   done
 fi
-
