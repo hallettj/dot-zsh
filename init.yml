@@ -7,6 +7,7 @@
     - name: install apt packages
       apt: pkg={{ item }} state=present
       sudo: yes
+      when: no_sudo is not defined
       with_items:
         - xclip
         - zsh
