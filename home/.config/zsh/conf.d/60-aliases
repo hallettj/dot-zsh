@@ -22,3 +22,9 @@ alias note="if [ -t 0 ]; then; echo '' | vipe .markdown | note; else note; fi"
 
 # Run provisioning scripts for dot files
 alias provision="mr -d $HOME run command ansible-playbook -K init.yml"
+
+# tmux
+alias tl="tmux list-sessions"
+alias ts="tmux new-session -s"
+alias ta="tmux attach-session -t"
+alias tad="tmux attach-session -d -t"
