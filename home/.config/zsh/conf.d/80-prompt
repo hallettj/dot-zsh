@@ -1,13 +1,33 @@
-# Customizes terminal titles
-ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~" #Just the name of the working directory
+# Using prompt from:
+# https://github.com/olivierverdier/zsh-git-prompt
 
-# Prompt customizations
-ZSH_THEME_GIT_PROMPT_UNTRACKED=""
+source "$HOME/projects/zsh/zsh-git-prompt/zshrc.sh"
+GIT_PROMPT_EXECUTABLE="haskell"
 
-# Right-prompt customizations
-local return_code="%(?..%{$R%}%? ↵%{$RESET%})"
-function custom_vi_mode_prompt_info() {
-  # Displays indicator when in insert mode or non-zero exit status
-  echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/$return_code}"
+# Override appearance settings from zsh-git-prompt
+ZSH_THEME_GIT_PROMPT_PREFIX="("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{●%G%}"
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{✖%G%}"
+ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{✚%G%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{↓%G%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%G%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{✔%G%}"
+
+base01() {
+  content=$1
+  echo "%{$fg_bold[green]%}$content%{${reset_color}%}"
 }
-RPS1='$(custom_vi_mode_prompt_info)'
+
+my_prompt() {
+  leader=$(base01 "---")
+  working_dir="%2d"
+  exit_status="%(?..[%?] )"
+  prompt_char=$(base01 "%(!.#.>)")
+  echo "$leader $working_dir $(git_super_status) $exit_status$prompt_char "
+}
+
+PROMPT=$(my_prompt)
