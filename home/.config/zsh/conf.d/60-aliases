@@ -1,3 +1,4 @@
+alias ls="ls --color"
 alias ack="ack-grep"
 alias bell="echo '\a'"
 alias beep=bell
