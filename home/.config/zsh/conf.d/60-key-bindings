@@ -18,3 +18,7 @@ bindkey '^r' history-incremental-search-backward
 
 # Alias ) to 0, for use with inverted number row.
 bindkey -a ')' vi-digit-or-beginning-of-line
+
+# zsh-users/zsh-autosuggestions
+bindkey '^ ' autosuggest-accept
+bindkey '^_' autosuggest-clear

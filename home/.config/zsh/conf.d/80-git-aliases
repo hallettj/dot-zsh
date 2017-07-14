@@ -9,6 +9,7 @@
 # alias -g h='git reset HEAD'
 
 alias add='git add -p'
+alias co='git checkout'
 alias ci='git commit'
 alias lg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias pull='git pull'

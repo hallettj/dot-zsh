@@ -1,6 +1,3 @@
-autoload -Uz compinit
-compinit
-
 # Lets me cd into any directory immediately under the given paths
 # without typing the full path.
 cdpath=(. $HOME $HOME/projects)
