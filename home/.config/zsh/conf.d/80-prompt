@@ -6,7 +6,7 @@ GIT_PROMPT_EXECUTABLE="haskell"
 
 # Override appearance settings from zsh-git-prompt
 ZSH_THEME_GIT_PROMPT_PREFIX="("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{●%G%}"
@@ -17,17 +17,28 @@ ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{✔%G%}"
 
-base01() {
+function base01() {
   content=$1
   echo "%{$fg_bold[green]%}$content%{${reset_color}%}"
 }
 
-my_prompt() {
-  leader=$(base01 "---")
+# Customize display of mode indicator from vi-mode plugin
+NORMAL_MODE_INDICATOR="%{$bg[yellow]%}%{$fg[black]%} N %{$reset_color%}"
+INSERT_MODE_INDICATOR=$(base01 "---")
+unset RPS1
+
+function prompt_leader() {
+  local keymap="${KEYMAP:=main}"
+  local onNormal="${keymap/vicmd/$NORMAL_MODE_INDICATOR}"
+  local onInsert="${onNormal/(main|viins)/$INSERT_MODE_INDICATOR}"
+  echo "$onInsert"
+}
+
+function my_prompt() {
   working_dir="%2d"
   exit_status="%(?..[%?] )"
   prompt_char=$(base01 "%(!.#.>)")
-  echo "$leader $working_dir $(git_super_status) $exit_status$prompt_char "
+  echo "\$(prompt_leader) $working_dir \$(git_super_status)$exit_status$prompt_char "
 }
 
 PROMPT=$(my_prompt)
