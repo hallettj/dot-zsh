@@ -1,7 +1,6 @@
 # Using prompt from:
 # https://github.com/olivierverdier/zsh-git-prompt
 
-source "$HOME/projects/zsh/zsh-git-prompt/zshrc.sh"
 GIT_PROMPT_EXECUTABLE="haskell"
 
 # Override appearance settings from zsh-git-prompt
