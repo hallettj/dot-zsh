@@ -1,3 +1,5 @@
+# The `abbrev-alias` command comes from the momo-lab/zsh-abbrev-alias plugin
+
 alias ls="ls --color"
 alias ack="ack-grep"
 alias bell="echo '\a'"
@@ -7,8 +9,10 @@ alias pg="pgrep -fa"
 # Changes to top-level directory of git repository.
 alias gtop="cd \$(git rev-parse --show-toplevel)"
 
-alias nm="nmcli nm"
-alias con="nmcli con"
+# NetworkManager shortcuts
+abbrev-alias -c nm="nmcli nm"
+abbrev-alias -c con="nmcli con"
+abbrev-alias -c wifi="nmcli device wifi"
 
 # Generate a password
 alias mkpass="grep -v '[^a-z]' /usr/share/dict/words | shuf --random-source=/dev/urandom | head -n4 | paste -sd ' '"
@@ -25,7 +29,15 @@ alias note="if [ -t 0 ]; then; echo '' | vipe .markdown | note; else note; fi"
 alias provision="mr -d $HOME run command ansible-playbook -K init.yml"
 
 # tmux
-alias tl="tmux list-sessions"
-alias ts="tmux -u new-session -A -s"
-alias ta="tmux attach-session -t"
-alias tad="tmux attach-session -d -t"
+abbrev-alias -c tl="tmux list-sessions"
+abbrev-alias -c ts="tmux -u new-session -A -s"
+abbrev-alias -c ta="tmux attach-session -t"
+abbrev-alias -c tad="tmux attach-session -d -t"
+
+# docker and docker-compose
+abbrev-alias -c up='docker-compose up'
+abbrev-alias -c upd='docker-compose up -d'
+abbrev-alias -c stop='docker-compose stop'
+abbrev-alias -c res='docker-compose restart'
+abbrev-alias -c clean='docker-compose rm'
+abbrev-alias -c ds='docker-compose ps'
