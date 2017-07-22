@@ -26,6 +26,6 @@ alias provision="mr -d $HOME run command ansible-playbook -K init.yml"
 
 # tmux
 alias tl="tmux list-sessions"
-alias ts="tmux new-session -s"
+alias ts="tmux -u new-session -A -s"
 alias ta="tmux attach-session -t"
 alias tad="tmux attach-session -d -t"
