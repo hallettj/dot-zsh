@@ -1,29 +1,26 @@
 # Using prompt from:
 # https://github.com/olivierverdier/zsh-git-prompt
 
+setopt promptsubst
+
 GIT_PROMPT_EXECUTABLE="haskell"
 
 # Override appearance settings from zsh-git-prompt
 ZSH_THEME_GIT_PROMPT_PREFIX="("
 ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
-ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg[green]%}"
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{●%G%}"
-ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{✖%G%}"
-ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{✚%G%}"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_solarized[green]%}"
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_solarized[green]%}%{●%G%}"
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg_solarized[red]%}%{✖%G%}"
+ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg_solarized[red]%}%{✚%G%}"
 ZSH_THEME_GIT_PROMPT_BEHIND="%{↓%G%}"
 ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{✔%G%}"
 
-function base01() {
-  content=$1
-  echo "%{$fg_bold[green]%}$content%{${reset_color}%}"
-}
-
 # Customize display of mode indicator from vi-mode plugin
-NORMAL_MODE_INDICATOR="%{$bg[yellow]%}%{$fg[black]%} N %{$reset_color%}"
-INSERT_MODE_INDICATOR=$(base01 "---")
+NORMAL_MODE_INDICATOR="%{$bg_solarized[yellow]%}%{$fg_solarized[base02]%} N %{$reset_color%}"
+INSERT_MODE_INDICATOR="%{$fg_solarized[base01]%}"'%(3L.+.-)--'"%{$reset_color%}"
 unset RPS1
 
 function prompt_leader() {
@@ -34,10 +31,10 @@ function prompt_leader() {
 }
 
 function my_prompt() {
-  working_dir="%2d"
+  working_dir="%2~"
   exit_status="%(?..[%?] )"
-  prompt_char=$(base01 "%(!.#.>)")
-  echo "\$(prompt_leader) $working_dir \$(git_super_status)$exit_status$prompt_char "
+  prompt_char="%{$fg_solarized[base01]%}%(!.#.>)%{$reset_color%}"
+  print "\$(prompt_leader) $working_dir \$(git_super_status)$exit_status$prompt_char "
 }
 
 PROMPT=$(my_prompt)

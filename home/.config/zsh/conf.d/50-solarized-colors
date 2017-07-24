@@ -1,0 +1,40 @@
+typeset -gA fg_solarized
+typeset -gA bg_solarized
+
+fg_solarized=(
+  base03    $fg_bold[black]
+  base02    $fg[black]
+  base01    $fg_bold[green]
+  base00    $fg_bold[yellow]
+  base0     $fg_bold[blue]
+  base1     $fg_bold[cyan]
+  base2     $fg[white]
+  base3     $fg_bold[white]
+  yellow    $fg[yellow]
+  orange    $fg_bold[red]
+  red       $fg[red]
+  magenta   $fg[magenta]
+  violet    $fg_bold[magenta]
+  blue      $fg[blue]
+  cyan      $fg[cyan]
+  green     $fg[green]
+)
+
+bg_solarized=(
+  base03    $bg_bold[black]
+  base02    $bg[black]
+  base01    $bg_bold[green]
+  base00    $bg_bold[yellow]
+  base0     $bg_bold[blue]
+  base1     $bg_bold[cyan]
+  base2     $bg[white]
+  base3     $bg_bold[white]
+  yellow    $bg[yellow]
+  orange    $bg_bold[red]
+  red       $bg[red]
+  magenta   $bg[magenta]
+  violet    $bg_bold[magenta]
+  blue      $bg[blue]
+  cyan      $bg[cyan]
+  green     $bg[green]
+)
