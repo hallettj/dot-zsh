@@ -39,22 +39,4 @@ function expand-alias-and-accept-line() {
   zle .accept-line
 }
 
-function expand-alias-with-magic-space() {
-  __abbrev_alias::magic_abbrev_expand
-  zle .backward-delete-char # removes the space that `magic_abbrev_expand` inserted
-  zle magic-space
-}
-
 zle -N accept-line expand-alias-and-accept-line
-zle -N expand-alias-with-magic-space
-
-# space expands all aliases, including global
-bindkey -M emacs " " expand-alias-with-magic-space
-bindkey -M viins " " expand-alias-with-magic-space
-
-# control-space to make a normal space
-bindkey -M emacs "^x " magic-space
-bindkey -M viins "^x " magic-space
-
-# normal space during searches
-bindkey -M isearch " " magic-space
