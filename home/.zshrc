@@ -15,12 +15,7 @@ unset LESS
 # Use Solarized theme colors for directory listings
 [[ -s "$HOME/.dircolors" ]] && eval `dircolors "$HOME/.dircolors"`
 
-# That's right
-export EDITOR=vim
-# And again
-export VISUAL=$EDITOR
-
-# Load completions provided by Debian pacakages
+# Load completions provided by Debian packages
 if [[ -d "/usr/share/zsh/vendor-completions" ]]; then
   fpath=(/usr/share/zsh/vendor-completions $fpath)
 fi
