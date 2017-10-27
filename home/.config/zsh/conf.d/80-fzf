@@ -1,0 +1,9 @@
+# Load completions provided by fzf nix package
+if [[ -f "$HOME/.nix-profile/share/fzf/completion.zsh" ]]; then
+  source "$HOME/.nix-profile/share/fzf/completion.zsh"
+fi
+
+# Load key bindings provided by fzf nix package
+if [[ -f "$HOME/.nix-profile/share/fzf/key-bindings.zsh" ]]; then
+  source "$HOME/.nix-profile/share/fzf/key-bindings.zsh"
+fi

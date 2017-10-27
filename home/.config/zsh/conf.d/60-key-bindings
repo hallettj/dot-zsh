@@ -23,6 +23,22 @@ bindkey -a ')' vi-digit-or-beginning-of-line
 bindkey '^ ' autosuggest-accept
 bindkey '^_' autosuggest-clear
 
+# fzf
+function edit-with-fzf() {
+  local file="$(__fsel)"
+  local ret=$?
+  zle redisplay
+  typeset -f zle-line-init >/dev/null && zle zle-line-init
+  if [[ -n "$file" ]]; then
+    BUFFER="${EDITOR:-vim} $file"
+    zle redisplay
+    zle accept-line
+  fi
+  return $ret
+}
+zle -N edit-with-fzf
+bindkey '^p' edit-with-fzf
+
 # zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
