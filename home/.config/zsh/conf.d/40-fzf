@@ -1,0 +1,40 @@
+# Load completions provided by fzf nix package
+if [[ -f "$HOME/.nix-profile/share/fzf/completion.zsh" ]]; then
+  source "$HOME/.nix-profile/share/fzf/completion.zsh"
+fi
+
+# Load key bindings provided by fzf nix package
+if [[ -f "$HOME/.nix-profile/share/fzf/key-bindings.zsh" ]]; then
+  source "$HOME/.nix-profile/share/fzf/key-bindings.zsh"
+fi
+
+__fzf_edit_file() {
+  local cmd="$1"
+  local file="$(FZF_CTRL_T_COMMAND="$cmd" __fsel)"
+  local ret=$?
+  zle redisplay
+  typeset -f zle-line-init >/dev/null && zle zle-line-init
+  if [[ -n "$file" ]]; then
+    BUFFER="${EDITOR:-vim} $file"
+    zle redisplay
+    zle accept-line
+  fi
+  return $ret
+}
+
+# Use fzf to find a file under the working directory using `$EDITOR`
+function fzf-edit-project-file() {
+  __fzf_edit_file "fd ."
+}
+zle -N fzf-edit-project-file
+
+# Use fzf to find a file under your home directory using `$EDITOR`
+function fzf-edit-home-file() {
+  __fzf_edit_file "fd . $HOME"
+}
+zle -N fzf-edit-home-file
+
+function fzf-edit-home-file-include-hidden() {
+  __fzf_edit_file "fd --hidden . $HOME"
+}
+zle -N fzf-edit-home-file-include-hidden

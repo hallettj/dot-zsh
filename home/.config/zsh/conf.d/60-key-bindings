@@ -24,20 +24,10 @@ bindkey '^ ' autosuggest-accept
 bindkey '^_' autosuggest-clear
 
 # fzf
-function edit-with-fzf() {
-  local file="$(__fsel)"
-  local ret=$?
-  zle redisplay
-  typeset -f zle-line-init >/dev/null && zle zle-line-init
-  if [[ -n "$file" ]]; then
-    BUFFER="${EDITOR:-vim} $file"
-    zle redisplay
-    zle accept-line
-  fi
-  return $ret
-}
-zle -N edit-with-fzf
-bindkey '^p' edit-with-fzf
+bindkey '^p' fzf-edit-project-file
+bindkey '^Xp' fzf-edit-home-file
+bindkey '^XP' fzf-edit-home-file-include-hidden
+bindkey '^Xg' fzf-cd-widget
 
 # zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
@@ -54,5 +44,4 @@ function expand-alias-and-accept-line() {
   zle .backward-delete-char # this prevents a ^M character from ending up as part of the command
   zle .accept-line
 }
-
 zle -N accept-line expand-alias-and-accept-line
