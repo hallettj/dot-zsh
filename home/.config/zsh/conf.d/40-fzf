@@ -38,3 +38,15 @@ function fzf-edit-home-file-include-hidden() {
   __fzf_edit_file "fd --hidden . $HOME"
 }
 zle -N fzf-edit-home-file-include-hidden
+
+function fzf-goto-project-directory() {
+  local top="$(git rev-parse --show-toplevel 2>/dev/null || true)"
+  local dir="${top:-.}"
+  FZF_ALT_C_COMMAND="fd --type directory . '$dir'" zle fzf-cd-widget
+}
+zle -N fzf-goto-project-directory
+
+function fzf-goto-root-directory() {
+  FZF_ALT_C_COMMAND="fd --type directory . /" zle fzf-cd-widget
+}
+zle -N fzf-goto-root-directory

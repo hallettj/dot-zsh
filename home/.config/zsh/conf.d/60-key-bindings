@@ -27,7 +27,8 @@ bindkey '^_' autosuggest-clear
 bindkey '^p' fzf-edit-project-file
 bindkey '^Xp' fzf-edit-home-file
 bindkey '^XP' fzf-edit-home-file-include-hidden
-bindkey '^Xg' fzf-cd-widget
+bindkey '^Xg' fzf-goto-project-directory
+bindkey '^XG' fzf-goto-root-directory
 
 # zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
