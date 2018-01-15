@@ -23,12 +23,7 @@ fi
 # Read completion scripts from ~/.config/zsh/completions/*
 COMPLETIONS="$HOME/.config/zsh/completions"
 if [ -d "$COMPLETIONS" ]; then
-  COMPLETIONFILES=$(run-parts --list $COMPLETIONS)
-  if [ -n "$COMPLETIONFILES" ]; then
-    for COMPLETIONFILE in ${(f)COMPLETIONFILES}; do
-      fpath=($COMPLETIONFILE $fpath)
-    done
-  fi
+  fpath=($COMPLETIONS $fpath)
 fi
 
 # Source configurations from ~/.config/zsh/conf.d/*
