@@ -30,11 +30,19 @@ function prompt_leader() {
   echo "$onInsert"
 }
 
+function active_force_login() {
+  local force="$(which force)"
+  if [[ -f src/package.xml && $+commands[force] > 0 ]]; then
+    login="$(force active | sed 's/.*\(@[^.]\+\).*/\1/')"
+    echo "$login "
+  fi
+}
+
 function my_prompt() {
   working_dir="%2~"
   exit_status="%(?..[%?] )"
   prompt_char="%{$fg_solarized[base01]%}%(!.#.>)%{$reset_color%}"
-  print "\$(prompt_leader) $working_dir \$(git_super_status)$exit_status$prompt_char "
+  print "\$(prompt_leader) $working_dir \$(active_force_login)\$(git_super_status)$exit_status$prompt_char "
 }
 
 PROMPT=$(my_prompt)
