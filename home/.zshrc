@@ -8,6 +8,8 @@ cdpath=(. $HOME $HOME/projects)
 unsetopt nomatch
 # Wait until the next prompt is printed to say whether a job is finished.
 unsetopt notify
+# Change directory without typing `cd` first.
+setopt auto_cd
 
 # Exporting options for less breaks `git diff`.  Not sure why.
 unset LESS
