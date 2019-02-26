@@ -6,7 +6,7 @@ zplug "plugins/sbt", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "momo-lab/zsh-abbrev-alias"
 zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh, hook-build:"stack setup && stack build && stack install"
-zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-autosuggestions", at:develop
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "andrewferrier/fzf-z", defer:1 # depends on rupa/z
