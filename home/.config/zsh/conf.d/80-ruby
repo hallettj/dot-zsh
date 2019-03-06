@@ -1,6 +1,0 @@
-# Ruby settings: this option automatically loads rubygems so that I don't need
-# any explicit require lines.
-export RUBYOPT='rubygems'
-
-# Run multiple Ruby versions with RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
