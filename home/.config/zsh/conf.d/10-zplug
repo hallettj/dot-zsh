@@ -1,4 +1,4 @@
-source ~/.zplug/init.zsh
+source /usr/share/zplug/init.zsh
 
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
