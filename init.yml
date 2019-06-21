@@ -9,6 +9,7 @@
       sudo: yes
       when: no_sudo is not defined
       with_items:
+        - fzf
         - xclip
         - zplug
         - zsh
