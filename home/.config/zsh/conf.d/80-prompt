@@ -1,48 +1,17 @@
-# Using prompt from:
-# https://github.com/olivierverdier/zsh-git-prompt
+SPACESHIP_EXIT_CODE_SHOW=true
+SPACESHIP_NODE_DEFAULT_VERSION=$(nvm alias default --no-colors | awk -F' |)' '{print $5}')
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_VI_MODE_INSERT="%{$fg_solarized[base01]%}[I]%{$reset_color%}"
+SPACESHIP_VI_MODE_NORMAL="%{$fg_solarized[yellow]%}[N]%{$reset_color%}"
 
-setopt promptsubst
-
-GIT_PROMPT_EXECUTABLE="haskell"
-
-# Override appearance settings from zsh-git-prompt
-ZSH_THEME_GIT_PROMPT_PREFIX="("
-ZSH_THEME_GIT_PROMPT_SUFFIX=") "
-ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
-ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_solarized[green]%}"
-ZSH_THEME_GIT_PROMPT_STAGED="%{$fg_solarized[green]%}%{●%G%}"
-ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg_solarized[red]%}%{✖%G%}"
-ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg_solarized[red]%}%{✚%G%}"
-ZSH_THEME_GIT_PROMPT_BEHIND="%{↓%G%}"
-ZSH_THEME_GIT_PROMPT_AHEAD="%{↑%G%}"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{…%G%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{✔%G%}"
-
-# Customize display of mode indicator from vi-mode plugin
-NORMAL_MODE_INDICATOR="%{$bg_solarized[yellow]%}%{$fg_solarized[base02]%} N %{$reset_color%}"
-INSERT_MODE_INDICATOR="%{$fg_solarized[base01]%}"'%(3L.+.-)--'"%{$reset_color%}"
-unset RPS1
-
-function prompt_leader() {
-  local keymap="${KEYMAP:=main}"
-  local onNormal="${keymap/vicmd/$NORMAL_MODE_INDICATOR}"
-  local onInsert="${onNormal/(main|viins)/$INSERT_MODE_INDICATOR}"
-  echo "$onInsert"
-}
-
-function active_force_login() {
-  local force="$(which force)"
-  if [[ -f src/package.xml && $+commands[force] > 0 ]]; then
-    login="$(force active | sed 's/.*\(@[^.]\+\).*/\1/')"
-    echo "$login "
+# Show package version number in prompt only when in `node_modules/`
+# subdirectory
+function chpwd_show_package() {
+  if [[ $(pwd) =~ '/node_modules/' ]]; then
+    SPACESHIP_PACKAGE_SHOW=true
+  else
+    SPACESHIP_PACKAGE_SHOW=false
   fi
 }
-
-function my_prompt() {
-  working_dir="%2~"
-  exit_status="%(?..[%?] )"
-  prompt_char="%{$fg_solarized[base01]%}%(!.#.>)%{$reset_color%}"
-  print "\$(prompt_leader) $working_dir \$(active_force_login)\$(git_super_status)$exit_status$prompt_char "
-}
-
-PROMPT=$(my_prompt)
+# Add the chpwd_show_package() function to the list called by chpwd()!
+chpwd_functions=( ${chpwd_functions} chpwd_show_package )

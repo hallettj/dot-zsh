@@ -5,7 +5,7 @@ zplug "lib/history", from:oh-my-zsh
 zplug "plugins/sbt", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "momo-lab/zsh-abbrev-alias"
-zplug "olivierverdier/zsh-git-prompt", use:zshrc.sh, hook-build:"stack setup && stack build && stack install"
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 zplug "zsh-users/zsh-autosuggestions", at:develop
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
