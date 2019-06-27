@@ -1,6 +1,8 @@
 SPACESHIP_EXIT_CODE_SHOW=true
 SPACESHIP_NODE_DEFAULT_VERSION=$(nvm alias default --no-colors | awk -F' |)' '{print $5}')
 SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_CHAR_SUFFIX=" "
+SPACESHIP_CHAR_SYMBOL=❯
 SPACESHIP_VI_MODE_INSERT="%{$fg_solarized[base01]%}[I]%{$reset_color%}"
 SPACESHIP_VI_MODE_NORMAL="%{$fg_solarized[yellow]%}[N]%{$reset_color%}"
 
