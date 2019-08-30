@@ -1,5 +1,5 @@
 SPACESHIP_EXIT_CODE_SHOW=true
-SPACESHIP_NODE_DEFAULT_VERSION=$(nvm alias default --no-colors | awk -F' |)' '{print $5}')
+SPACESHIP_NODE_DEFAULT_VERSION=$(nvm alias default --no-colors | grep -Eo 'v[0-9.]+')
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_CHAR_SUFFIX=" "
 SPACESHIP_CHAR_SYMBOL=❯
