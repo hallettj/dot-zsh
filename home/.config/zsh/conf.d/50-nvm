@@ -1,2 +1,21 @@
-export NVM_DIR="$HOME/.config"
-[[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"  # This loads nvm into a shell session.
+function is_nvm_dir() {
+  local dir="$1"
+  [[ -s "$dir/nvm.sh" ]]
+}
+
+# Unset NVM_DIR if it is set incorrectly
+if ! is_nvm_dir $NVM_DIR; then
+  unset NVM_DIR
+fi
+
+if [[ -z $NVM_DIR ]]; then
+  for dir ("$HOME/.nvm" "$HOME/.config") {
+    if is_nvm_dir $dir; then
+      export NVM_DIR=$dir
+    fi
+  }
+fi
+
+if [[ -n $NVM_DIR ]]; then
+  . "$NVM_DIR/nvm.sh"  # This loads nvm into a shell session.
+fi
