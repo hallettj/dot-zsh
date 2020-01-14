@@ -5,6 +5,7 @@ SPACESHIP_CHAR_SUFFIX=" "
 SPACESHIP_CHAR_SYMBOL=❯
 SPACESHIP_VI_MODE_INSERT="%{$fg_solarized[base01]%}[I]%{$reset_color%}"
 SPACESHIP_VI_MODE_NORMAL="%{$fg_solarized[yellow]%}[N]%{$reset_color%}"
+SPACESHIP_HASKELL_SHOW=false
 
 # Show package version number in prompt only when in `node_modules/`
 # subdirectory
