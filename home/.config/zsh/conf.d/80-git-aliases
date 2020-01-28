@@ -10,6 +10,7 @@
 
 abbrev-alias -c add='git add -p'
 abbrev-alias -c co='git checkout'
+abbrev-alias -c sw='git switch'
 abbrev-alias -c ci='git commit'
 alias lg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 abbrev-alias -c pull='git pull'
