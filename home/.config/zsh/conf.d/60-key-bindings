@@ -42,7 +42,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 # from: https://gist.github.com/Frost/6ee5308103c43638ed7af493c8df702d
 function expand-alias-and-accept-line() {
   __abbrev_alias::magic_abbrev_expand
-  zle .backward-delete-char # this prevents a ^M character from ending up as part of the command
   zle .accept-line
 }
 zle -N accept-line expand-alias-and-accept-line
