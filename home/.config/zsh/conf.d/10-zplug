@@ -8,7 +8,6 @@ zplug "lib/completion", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 zplug "chrisands/zsh-yarn-completions", defer:2
 zplug "lukechilds/zsh-nvm"
-zplug "plugins/sbt", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "momo-lab/zsh-abbrev-alias"
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
