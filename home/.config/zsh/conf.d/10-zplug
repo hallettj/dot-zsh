@@ -17,6 +17,7 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "andrewferrier/fzf-z", defer:1 # depends on rupa/z
 zplug "rupa/z", use:z.sh
+zplug "wadewegner/salesforce-cli-zsh-completion"
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
