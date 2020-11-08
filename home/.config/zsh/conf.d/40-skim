@@ -1,0 +1,11 @@
+SKIM_TMUX=1
+SKIM_CTRL_T_COMMAND='rg --files'
+SKIM_CTRL_T_OPTS='--preview="bat {} --color=always"'
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "$HOME/.nix-profile/share/skim/completion.zsh" 2> /dev/null
+
+# Key bindings
+# ------------
+source "$HOME/.nix-profile/share/skim/key-bindings.zsh"
