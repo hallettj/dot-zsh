@@ -1,20 +1,5 @@
-SPACESHIP_EXIT_CODE_SHOW=true
-SPACESHIP_NODE_DEFAULT_VERSION=$(nvm alias default --no-colors | grep -Eo 'v[0-9.]+')
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_CHAR_SYMBOL=❯
-SPACESHIP_VI_MODE_INSERT="%{$fg_solarized[base01]%}[I]%{$reset_color%}"
-SPACESHIP_VI_MODE_NORMAL="%{$fg_solarized[yellow]%}[N]%{$reset_color%}"
-SPACESHIP_HASKELL_SHOW=false
+# The vi-mode plugin sets the right prompt - disable it here.
+unset RPS1
 
-# Show package version number in prompt only when in `node_modules/`
-# subdirectory
-function chpwd_show_package() {
-  if [[ $(pwd) =~ '/node_modules/' ]]; then
-    SPACESHIP_PACKAGE_SHOW=true
-  else
-    SPACESHIP_PACKAGE_SHOW=false
-  fi
-}
-# Add the chpwd_show_package() function to the list called by chpwd()!
-chpwd_functions=( ${chpwd_functions} chpwd_show_package )
+# See https://starship.rs/
+eval "$(starship init zsh)"

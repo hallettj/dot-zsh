@@ -10,7 +10,6 @@ zplug "chrisands/zsh-yarn-completions", defer:2
 zplug "lukechilds/zsh-nvm"
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "momo-lab/zsh-abbrev-alias"
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 zplug "zsh-users/zsh-autosuggestions", at:develop
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
