@@ -1,5 +1,6 @@
 # The `abbrev-alias` command comes from the momo-lab/zsh-abbrev-alias plugin
 
+alias fd="fdfind"
 alias ls="ls --color"
 alias ack="ack-grep"
 alias bell="echo '\a'"

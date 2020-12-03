@@ -9,10 +9,16 @@
       sudo: yes
       when: no_sudo is not defined
       with_items:
+        - fd-find
         - fzf
+        - ripgrep
         - xclip
         - zplug
         - zsh
+
+    # TODO: Also need these packages:
+    # - bat
+    # - skim
 
     # TODO: Does not work in playbook, since it asks for password confirmation
     # - name: set zsh as default shell
