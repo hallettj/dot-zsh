@@ -4,11 +4,11 @@ SKIM_CTRL_T_OPTS='--preview="bat --theme=\"Solarized (dark)\" --color=always {}"
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "$HOME/.nix-profile/share/skim/completion.zsh" 2> /dev/null
+[[ $- == *i* ]] && source "$HOME"/opt/skim/shell/completion.zsh
 
 # Key bindings
 # ------------
-source "$HOME/.nix-profile/share/skim/key-bindings.zsh"
+source "$HOME"/opt/skim/shell/key-bindings.zsh
 
 __skim_edit_file() {
   local cmd="$1"
