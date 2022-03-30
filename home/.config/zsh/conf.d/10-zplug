@@ -8,7 +8,7 @@ zplug "lib/completion", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 zplug "chrisands/zsh-yarn-completions", defer:2
 zplug "lukechilds/zsh-nvm"
-zplug "plugins/vi-mode", from:oh-my-zsh
+zplug "jeffreytse/zsh-vi-mode"
 zplug "momo-lab/zsh-abbrev-alias"
 zplug "zsh-users/zsh-autosuggestions", at:develop
 zplug "zsh-users/zsh-history-substring-search"
