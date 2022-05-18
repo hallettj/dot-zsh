@@ -2,7 +2,11 @@
 export NVM_DIR="$HOME/.nvm"
 export NVM_AUTO_USE=true # automatically set node version from .nvmrc files
 
-source /usr/share/zplug/init.zsh
+if [ -f /usr/share/zsh/scripts/zplug/init.zsh ]; then
+  source /usr/share/zsh/scripts/zplug/init.zsh
+elif [-f /usr/share/zplug/init.zsh ]; then
+  source /usr/share/zplug/init.zsh
+fi
 
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
