@@ -4,7 +4,7 @@ export NVM_AUTO_USE=true # automatically set node version from .nvmrc files
 
 if [ -f /usr/share/zsh/scripts/zplug/init.zsh ]; then
   source /usr/share/zsh/scripts/zplug/init.zsh
-elif [-f /usr/share/zplug/init.zsh ]; then
+elif [ -f /usr/share/zplug/init.zsh ]; then
   source /usr/share/zplug/init.zsh
 fi
 
