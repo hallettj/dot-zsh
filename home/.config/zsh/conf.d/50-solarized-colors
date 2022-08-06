@@ -1,3 +1,6 @@
+# Aliases for Solarized colors; this is useful when using a Solarized
+# colorscheme.
+
 typeset -gA fg_solarized
 typeset -gA bg_solarized
 
