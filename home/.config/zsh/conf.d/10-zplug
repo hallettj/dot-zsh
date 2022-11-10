@@ -10,6 +10,7 @@ fi
 
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
+zplug "plugins/direnv", from:oh-my-zsh
 zplug "chrisands/zsh-yarn-completions", defer:2
 zplug "lukechilds/zsh-nvm"
 zplug "jeffreytse/zsh-vi-mode"
